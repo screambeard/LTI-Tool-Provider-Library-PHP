@@ -131,7 +131,7 @@ class ToolConsumer
 /**
  * Consumer ID value.
  *
- * @var int $id
+ * @var int|null $id
  */
     private $id = null;
 /**
@@ -149,7 +149,7 @@ class ToolConsumer
 /**
  * Data connector object or string.
  *
- * @var mixed $dataConnector
+ * @var DataConnector|null $dataConnector
  */
     private $dataConnector = null;
 
@@ -249,7 +249,7 @@ class ToolConsumer
 /**
  * Get the tool consumer record ID.
  *
- * @return int Consumer record ID value
+ * @return int|null Consumer record ID value
  */
     public function getRecordId()
     {
@@ -297,7 +297,7 @@ class ToolConsumer
 /**
  * Get the data connector.
  *
- * @return mixed Data connector object or string
+ * @return DataConnector|null Data connector object or string
  */
     public function getDataConnector()
     {
@@ -514,7 +514,15 @@ class ToolConsumer
 /**
  * Add the OAuth signature to an array of message parameters or to a header string.
  *
+ * @param string $endpoint
+ * @param string $consumerKey
+ * @param string $consumerSecret
+ * @param mixed $data
+ * @param string $method
+ * @param string|null $type
+ *
  * @return mixed Array of signed message parameters or header string
+ * @throws OAuth\OAuthException
  */
     public static function addSignature($endpoint, $consumerKey, $consumerSecret, $data, $method = 'POST', $type = null)
     {
